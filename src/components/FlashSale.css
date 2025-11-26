@@ -1,0 +1,300 @@
+/* src/components/FlashSale.css */
+
+.sales-section {
+  padding: 40px 20px;
+  background: #ffffff;
+  background-color: white;
+}
+
+.sales-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.sales-loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+  color: #666;
+}
+
+/* Sales Box Styling */
+.sales-box {
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+
+
+.sales-box-header {
+  padding: 20px;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sales-box-header h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* .sales-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  background: rgba(135, 41, 41, 0.3);
+  backdrop-filter: blur(10px);
+} */
+
+.sales-box-content {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Product Mini Card - 1:3 Ratio */
+.product-mini-card {
+  display: flex;
+  gap: 15px;
+  padding: 12px;
+  background-color: #ffffff;
+  border-radius: 3px;
+  border: 1px solid rgba(182, 181, 181, 0.4);
+  cursor: pointer;
+  height: 90px; /* Fixed height for consistency */
+}
+
+.product-mini-card:hover {
+  background: #e9ecef;
+}
+
+.product-mini-image {
+  flex-shrink: 0;
+  height: 100%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.product-mini-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.product-mini-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.product-mini-info h4 {
+  margin: 0 0 5px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: black;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.3;
+}
+
+.product-mini-desc {
+  margin: 0;
+  font-size: 12px;
+ color: #191C1F; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.4;
+}
+
+.product-mini-price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.product-mini-price .current {
+  font-size: 16px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.product-mini-price .original {
+  font-size: 13px;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.no-products {
+  text-align: center;
+  color: #999;
+  padding: 20px;
+  font-size: 14px;
+}
+
+/* Responsive Design */
+
+/* Large Tablets and Small Desktops */
+@media (max-width: 1200px) {
+  .sales-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .sales-section {
+    padding: 30px 15px;
+  }
+
+  .sales-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .sales-box-header h3 {
+    font-size: 18px;
+  }
+
+  .product-mini-card {
+    height: 110px;
+  }
+
+  .product-mini-image {
+    width: 35px;
+  }
+
+  .product-mini-info h4 {
+    font-size: 13px;
+  }
+
+  .product-mini-desc {
+    font-size: 11px;
+  }
+
+  .product-mini-price .current {
+    font-size: 14px;
+  }
+
+  .product-mini-price .original {
+    font-size: 12px;
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 480px) {
+  .sales-section {
+    padding: 20px 10px;
+  }
+
+  .sales-box-header {
+    padding: 15px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .sales-box-header h3 {
+    font-size: 16px;
+  }
+
+  .sales-badge {
+    align-self: flex-end;
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+
+  .product-mini-card {
+    height: 100px;
+    padding: 10px;
+  }
+
+  .product-mini-image {
+    width: 30px;
+  }
+
+  .product-mini-info h4 {
+    font-size: 12px;
+    -webkit-line-clamp: 1;
+  }
+
+  .product-mini-desc {
+    font-size: 10px;
+    -webkit-line-clamp: 1;
+  }
+
+  .product-mini-price {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .product-mini-price .current {
+    font-size: 13px;
+  }
+
+  .product-mini-price .original {
+    font-size: 11px;
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 360px) {
+  .product-mini-card {
+    height: 90px;
+  }
+
+  .product-mini-image {
+    width: 25px;
+  }
+}
+
+/* Dark Mode Support (Optional)
+@media (prefers-color-scheme: dark) {
+  .sales-section {
+    background: #1a1a1a;
+  }
+
+  .sales-box {
+    background: #2d2d2d;
+  }
+
+  .product-mini-card {
+    background: #3d3d3d;
+  }
+
+  .product-mini-card:hover {
+    background: #4d4d4d;
+  }
+
+  .product-mini-image {
+    background: #2d2d2d;
+  }
+
+  .product-mini-info h4 {
+    color: #f0f0f0;
+  }
+
+  .product-mini-desc {
+    color: #b0b0b0;
+  }
+} */

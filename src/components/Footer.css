@@ -1,0 +1,192 @@
+/* ===== FOOTER MAIN STYLE ===== */
+.footer {
+  background: #0a0a0a;
+  color: #fff;
+  padding: 60px 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Center container with perfect scaling */
+.container {
+  width: min(90%, 1400px);
+  margin: auto;
+}
+
+/* GRID – Automatically adjusts columns */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: clamp(20px, 3vw, 50px);
+  text-align: left;
+}
+
+/* ===== COLUMNS ===== */
+.logo-column h1 {
+  font-size: clamp(18px, 1.8vw, 28px);
+  margin-bottom: 12px;
+}
+
+.logo-column p {
+  margin: 6px 0;
+  line-height: 1.4;
+}
+
+/* Gray text utility */
+.text-gray-400 {
+  color: #77878F;
+  font-size: clamp(12px, 1vw, 14px);
+  font-weight: 400;
+}
+
+.text-size-one {
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.text-size-two {
+  font-size: clamp(14px, 1.3vw, 18px);
+}
+
+/* ===== LIST STYLING ===== */
+.logo-column ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.logo-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-column ul li {
+  margin: 6px 0;
+}
+
+.logo-column ul li a {
+  text-decoration: none;
+  color: #ddd;
+  font-size: clamp(13px, 1vw, 16px);
+  transition: 0.3s;
+}
+
+.logo-column ul li a:hover {
+  color: white;
+}
+
+/* Highlight text */
+.browse-footer {
+  display: flex;
+  align-items: center;
+  color: #EBC80C;
+}
+
+/* ===== APP STORE BADGES ===== */
+.app-store-box {
+  background: #1f2937;
+  padding: 6px 12px;
+  margin: 8px 0;
+  font-size: clamp(12px, 1vw, 15px);
+  display: flex;
+  cursor: pointer;
+  justify-content: flex-start;
+  align-items: center;
+  transition: 0.3s;
+  gap: 20px;
+  border-radius: 6px;
+}
+
+.app-store-box:hover {
+  background: white;
+  color: #000;
+}
+
+.store {
+  display: flex;
+  flex-direction: column;
+}
+
+.store p {
+  font-size: clamp(10px, 1vw, 12px);
+}
+
+/* ===== TAG GRID ===== */
+.grid-footer ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+}
+
+.grid-footer ul li {
+  margin: 0;
+}
+
+.grid-box {
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: #292929;
+  border: 1px solid #303639;
+}
+
+.grid-box a {
+  text-decoration: none;
+  color: #eee;
+  font-size: clamp(11px, 1vw, 14px);
+}
+
+/* Hover style */
+.grid-box:hover {
+  background: rgba(255, 255, 255, 0.5);
+  border: solid white;
+}
+
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+@media (max-width: 1024px) {
+  .footer {
+    text-align: center;
+  }
+
+  .grid {
+    text-align: center;
+  }
+
+  .app-store-box {
+    justify-content: center;
+  }
+  .grid-footer {
+    width: 312px;
+  }
+}
+/* Mobile – stack columns + center content */
+@media (max-width: 768px) {
+  .footer {
+    text-align: center;
+  }
+
+  .grid {
+    text-align: center;
+  }
+
+  .app-store-box {
+    justify-content: center;
+  }
+}
+
+/* Very small phones (≤ 380px) */
+@media (max-width: 380px) {
+  .grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    grid-template-columns: 1fr;
+  }
+  .app-store-box {
+    width: 60%;
+  }
+  .grid-footer {
+    width: 100%;
+  }
+}
