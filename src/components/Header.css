@@ -1,14 +1,8 @@
-/* =========================
-   SITE HEADER CONTAINER
-========================= */
 .site-header {
   width: 100%;
   font-family: sans-serif;
 }
 
-/* =========================
-   OFFER BANNER
-========================= */
 .offer-banner {
   background: #000;
   color: #fff;
@@ -26,7 +20,7 @@
 }
 
 .offer-badge {
-  background: #F3DE6D;
+  background: #f3de6d;
   padding: 3px 6px;
   color: black;
   font-weight: 600;
@@ -37,13 +31,13 @@
 }
 
 .offer-percent {
-  color: #EBC80C;
+  color: #ebc80c;
   font-size: 38px;
 }
 
 .shop-now-btn {
   padding: 8px 20px;
-  background: #EBC80C;
+  background: #ebc80c;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -59,11 +53,8 @@
   padding: 4px 8px;
 }
 
-/* =========================
-   SOCIAL STRIP
-========================= */
 .social-strip {
-  background: #1B6392;
+  background: #1b6392;
   padding: 6px 20px;
   display: flex;
   justify-content: space-between;
@@ -94,11 +85,8 @@
   margin-right: 10px;
 }
 
-/* =========================
-   MAIN HEADER
-========================= */
 .header {
-  background: #1B6392;
+  background: #1b6392;
   color: white;
   display: flex;
   align-items: center;
@@ -107,7 +95,6 @@
   gap: 20px;
 }
 
-/* LEFT SIDE */
 .header-left {
   display: flex;
   align-items: center;
@@ -123,11 +110,10 @@
   flex-shrink: 0;
 }
 
-/* SEARCH BAR */
 .header-center {
   display: flex;
   justify-content: center;
-  flex: 2; /* Takes more space to center properly */
+  flex: 2;
 }
 .header-search {
   position: relative;
@@ -160,7 +146,6 @@
   pointer-events: none;
 }
 
-/* RIGHT SIDE */
 .header-right {
   display: flex;
   align-items: center;
@@ -173,7 +158,6 @@
   cursor: pointer;
 }
 
-/* CART BADGE */
 .cart-wrapper {
   position: relative;
   cursor: pointer;
@@ -183,16 +167,13 @@
   position: absolute;
   top: -6px;
   right: -10px;
-  background: #e63946;
-  color: white;
+  background: #ffffff;
+  color: rgb(0, 0, 0);
   font-size: 10px;
   padding: 2px 6px;
   border-radius: 50%;
 }
 
-/* =========================
-   NAVIGATION BAR
-========================= */
 .main-nav {
   background: #fff;
   padding: 12px 20px;
@@ -200,6 +181,7 @@
   position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 20px;
 }
 
@@ -215,10 +197,9 @@
 }
 
 .nav-link:hover {
-  color: #1B6392;
+  color: #1b6392;
 }
 
-/* DROPDOWN */
 .dropdown-toggle {
   display: inline-flex;
   align-items: center;
@@ -233,7 +214,6 @@
   transition: transform 0.2s;
 }
 
-/* Category Dropdown */
 .category-dropdown {
   position: absolute;
   top: 100%;
@@ -260,7 +240,7 @@
 }
 
 .category-item:hover {
-  background: #1B6392;
+  background: #1b6392;
   color: white;
 }
 
@@ -290,13 +270,7 @@
   }
 }
 
-/* =========================
-   RESPONSIVE MEDIA QUERIES
-========================= */
-
-/* TABLETS AND BELOW (<= 768px) */
 @media (max-width: 768px) {
-  /* Hide search bar */
   .header-search {
     display: none !important;
   }
@@ -317,7 +291,6 @@
     gap: 15px;
   }
 
-  /* Adjust social strip */
   .social-strip {
     flex-direction: column;
     gap: 8px;
@@ -330,7 +303,6 @@
     justify-content: center;
   }
 
-  /* Offer banner adjustments */
   .offer-banner {
     flex-wrap: wrap;
     gap: 10px;
@@ -342,7 +314,6 @@
     font-size: 28px;
   }
 
-  /* Nav adjustments */
   .main-nav {
     padding: 10px 15px;
     gap: 15px;
@@ -355,7 +326,6 @@
   }
 }
 
-/* MOBILE (425px and below) */
 @media (max-width: 425px) {
   .header {
     padding: 10px 12px;
@@ -416,7 +386,6 @@
   }
 }
 
-/* SMALL MOBILE (375px and below) */
 @media (max-width: 375px) {
   .header {
     padding: 8px 10px;
@@ -458,7 +427,6 @@
   }
 }
 
-/* VERY SMALL DEVICES (325px and below) */
 @media (max-width: 325px) {
   .header {
     padding: 8px;

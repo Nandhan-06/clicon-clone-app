@@ -84,7 +84,7 @@ export default function SearchPage() {
                   if (actions) actions.style.opacity = "0";
                 }}
               >
-                {/* Hover Actions */}
+                
                 <div 
                   className="product-actions"
                   style={{

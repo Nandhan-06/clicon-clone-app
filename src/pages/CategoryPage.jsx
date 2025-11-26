@@ -1,9 +1,8 @@
-//CategoryPage
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FiHeart, FiShoppingCart, FiEye } from "react-icons/fi";
 import axios from "axios";
-import "../components/CategoryPage.css"; // Create this CSS file as needed
+import "../components/CategoryPage.css";
 
 export default function CategoryPage() {
   const { category } = useParams();
@@ -50,51 +49,46 @@ export default function CategoryPage() {
       </div>
 
       <div className="products-grid">
-  {products.map((product) => (
-    <div key={product.id} className="product-item">
-      
-      <div className="product-img-wrap">
-        <img src={product.thumbnail} alt={product.title} />
+        {products.map((product) => (
+          <div key={product.id} className="product-item">
+            <div className="product-img-wrap">
+              <img src={product.thumbnail} alt={product.title} />
 
-        {/* ICONS */}
-        <div className="product-icons">
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              alert("Added to wishlist (demo)");
-            }}
-          >
-            <FiHeart />
-          </button>
+              <div className="product-icons">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    alert("Added to wishlist (demo)");
+                  }}
+                >
+                  <FiHeart />
+                </button>
 
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              addToCart(product, 1);
-            }}
-          >
-            <FiShoppingCart />
-          </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    addToCart(product, 1);
+                  }}
+                >
+                  <FiShoppingCart />
+                </button>
 
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              openQuickView(product);
-            }}
-          >
-            <FiEye />
-          </button>
-        </div>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    openQuickView(product);
+                  }}
+                >
+                  <FiEye />
+                </button>
+              </div>
+            </div>
+
+            <h3>{product.title}</h3>
+            <p className="price">${product.price}</p>
+          </div>
+        ))}
       </div>
-
-      <h3>{product.title}</h3>
-      <p className="price">${product.price}</p>
-    </div>
-  ))}
-</div>
-
-          
-      
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../context/CartContext";
 import axios from "axios"; 
 import { FiHeart, FiShoppingCart, FiUser, FiChevronDown, FiSearch } from "react-icons/fi";
 import {
@@ -21,8 +22,6 @@ const allowedCategories = [
   "tablets",
   "mobile-accessories",
 ];
-
-// SearchBar component with proper className
 const SearchBar = ({ navigate }) => {
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -35,7 +34,6 @@ const SearchBar = ({ navigate }) => {
     try {
       const allProducts = [];
 
-      // Fetch from all categories
       for (const category of allowedCategories) {
         const res = await axios.get(
           `https://dummyjson.com/products/category/${category}`
@@ -43,12 +41,12 @@ const SearchBar = ({ navigate }) => {
         allProducts.push(...res.data.products);
       }
 
-      // Filter products matching the search query
+     
       const matched = allProducts.filter((p) =>
         p.title.toLowerCase().includes(query.toLowerCase())
       );
 
-      // Navigate to search results page
+     
       navigate("/search", { state: { results: matched, query } });
     } catch (error) {
       console.error("Search error:", error);
@@ -76,13 +74,13 @@ function Header({
   showNav = true,
 }) {
   const navigate = useNavigate();
-  const [cartCount] = useState(3);
+  const { cartCount } = useCart();
   const [showBanner, setShowBanner] = useState(showTopBanner);
   const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
 
   return (
     <header className="site-header">
-      {/* ===== BLACK OFFER BANNER ===== */}
+      
       {showBanner && showTopBanner && (
         <div className="offer-banner">
           <div className="offer-badge-wrapper">
@@ -107,7 +105,7 @@ function Header({
         </div>
       )}
 
-      {/* ===== SOCIAL STRIP ===== */}
+      
       {showSocialStrip && (
         <div className="social-strip">
           <div className="welcome-text">Welcome to Clicon online eCommerce store.</div>
@@ -134,7 +132,7 @@ function Header({
         </div>
       )}
 
-      {/* ===== MAIN HEADER (LOGO + SEARCH + ICONS) ===== */}
+      
       <div className="header">
         <div className="header-left">
           <h2 
@@ -165,10 +163,10 @@ function Header({
         </div>
       </div>
 
-      {/* ===== NAV + CATEGORY DROPDOWN ===== */}
+   
       {showNav && (
         <nav className="main-nav">
-          {/* Category Button */}
+         
           <div
             className="category-toggle"
             onClick={() => setShowCategoryDropdown((s) => !s)}
@@ -176,7 +174,7 @@ function Header({
             All Category{" "}
             <FiChevronDown className={showCategoryDropdown ? "rotate" : ""} />
 
-            {/* DROPDOWN */}
+           
             {showCategoryDropdown && (
               <div className="category-dropdown">
                 {allowedCategories.map((cat) => (

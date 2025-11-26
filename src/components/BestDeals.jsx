@@ -7,7 +7,7 @@ import DealTimer from "./DealTimer";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import "./BestDeals.css";
 
-// Group by category
+
 function groupByCategory(products) {
   return products.reduce((groups, product) => {
     const cat = product.category || "others";
@@ -46,7 +46,7 @@ export default function BestDeals() {
 
   const { addToCart } = useCart();
 
-  // Fetch data
+ 
   useEffect(() => {
     setLoading(true);
     axios
@@ -65,7 +65,7 @@ export default function BestDeals() {
       });
   }, []);
 
-  // Choose 9 highlighted products
+ 
   useEffect(() => {
     if (!allProducts.length) {
       setDisplayProducts([]);
@@ -74,7 +74,6 @@ export default function BestDeals() {
 
     const pool = shuffleArr(allProducts);
 
-    // 1) Best match
     let first =
       pool.find(
         (p) =>
@@ -89,7 +88,7 @@ export default function BestDeals() {
         return b.rating - a.rating;
       })[0];
 
-    // 2) sold out pick
+   
     let second = pool.find((p) => p.stock === 0 && p.id !== first.id) || null;
 
     let soldFallback = false;
@@ -195,7 +194,7 @@ export default function BestDeals() {
                     {isFirst && (
                       <>
                         <div className="rating">
-                          <span className="stars">
+                          <span className="stars-yellow">
                             {"★".repeat(Math.round(item.rating))}
                           </span>
                           <span className="rating-num">
@@ -334,7 +333,7 @@ export default function BestDeals() {
         )}
       </div>
 
-      {/* QuickView Modal */}
+      QuickView Modal
       {quickView && (
         <div className="quickview-backdrop" onClick={closeQuickView}>
           <div className="quickview" onClick={(e) => e.stopPropagation()}>

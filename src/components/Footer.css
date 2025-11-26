@@ -1,4 +1,3 @@
-/* ===== FOOTER MAIN STYLE ===== */
 .footer {
   background: #0a0a0a;
   color: #fff;
@@ -6,13 +5,12 @@
   font-family: Arial, sans-serif;
 }
 
-/* Center container with perfect scaling */
 .container {
   width: min(90%, 1400px);
   margin: auto;
 }
 
-/* GRID – Automatically adjusts columns */
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -20,7 +18,7 @@
   text-align: left;
 }
 
-/* ===== COLUMNS ===== */
+
 .logo-column h1 {
   font-size: clamp(18px, 1.8vw, 28px);
   margin-bottom: 12px;
@@ -31,7 +29,6 @@
   line-height: 1.4;
 }
 
-/* Gray text utility */
 .text-gray-400 {
   color: #77878F;
   font-size: clamp(12px, 1vw, 14px);
@@ -48,7 +45,6 @@
   font-size: clamp(14px, 1.3vw, 18px);
 }
 
-/* ===== LIST STYLING ===== */
 .logo-column ul {
   list-style: none;
   padding: 0;
@@ -75,14 +71,13 @@
   color: white;
 }
 
-/* Highlight text */
+
 .browse-footer {
   display: flex;
   align-items: center;
   color: #EBC80C;
 }
 
-/* ===== APP STORE BADGES ===== */
 .app-store-box {
   background: #1f2937;
   padding: 6px 12px;
@@ -111,7 +106,6 @@
   font-size: clamp(10px, 1vw, 12px);
 }
 
-/* ===== TAG GRID ===== */
 .grid-footer ul {
   display: flex;
   flex-wrap: wrap;
@@ -137,13 +131,11 @@
   font-size: clamp(11px, 1vw, 14px);
 }
 
-/* Hover style */
 .grid-box:hover {
   background: rgba(255, 255, 255, 0.5);
   border: solid white;
 }
 
-/* ===== RESPONSIVE BREAKPOINTS ===== */
 @media (max-width: 1024px) {
   .footer {
     text-align: center;
@@ -160,7 +152,7 @@
     width: 312px;
   }
 }
-/* Mobile – stack columns + center content */
+
 @media (max-width: 768px) {
   .footer {
     text-align: center;
@@ -175,7 +167,7 @@
   }
 }
 
-/* Very small phones (≤ 380px) */
+
 @media (max-width: 380px) {
   .grid {
     display: flex;

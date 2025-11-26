@@ -4,6 +4,7 @@ import Breadcrump from "../components/Breadcrump";
 import CartItemsList from "../components/CartItemsList";
 import CheckoutSummary from "../components/CheckoutSummary";
 import Footer from "../components/Footer";
+import "../styles/cart.css";
 
 export default function Cart() {
   const navigate = useNavigate();
@@ -14,11 +15,7 @@ export default function Cart() {
 
   return (
     <>
-      <Header
-        showTopBanner={false}
-        showSocialStrip={false}
-        showNav={true}
-      />
+      <Header showTopBanner={false} showSocialStrip={false} showNav={true} />
 
       {/* Back Button */}
       <div className="back-button-container">
@@ -29,12 +26,17 @@ export default function Cart() {
 
       <Breadcrump />
 
-      <div className="cart-container">
+      <div className="cart-page-container">
         <CartItemsList />
         <CheckoutSummary />
       </div>
 
-      <Footer />
+      <Footer
+        showTopCategory={true}
+        showQuickLinks={true}
+        showDownloadApp={true}
+        showTags={false}
+      />
     </>
   );
 }

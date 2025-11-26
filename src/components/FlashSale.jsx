@@ -1,7 +1,8 @@
-// src/components/FlashSale.jsx
 import { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import { FiHeart, FiShoppingCart, FiEye } from "react-icons/fi";
+import { FaStar, FaRegStar } from "react-icons/fa"; 
+import { useNavigate } from "react-router-dom"; 
 import { useCart } from "../context/CartContext";
 import "./FlashSale.css";
 
@@ -18,13 +19,12 @@ export default function FlashSale() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Quick View State
   const [quickView, setQuickView] = useState(null);
   const [qty, setQty] = useState(1);
 
   const { addToCart } = useCart();
+  const navigate = useNavigate(); 
 
-  // Fetch Products
   useEffect(() => {
     const getProducts = async () => {
       try {
@@ -74,7 +74,6 @@ export default function FlashSale() {
     return <div className="sales-loading">Loading products...</div>;
   }
 
-  // QuickView Helper Functions
   const openQuickView = (product) => {
     setQty(1);
     setQuickView(product);
@@ -82,7 +81,6 @@ export default function FlashSale() {
 
   const closeQuickView = () => setQuickView(null);
 
-  // Placeholder Image (same as BestDeals)
   const placeholder =
     "data:image/svg+xml;utf8," +
     encodeURIComponent(
@@ -116,36 +114,6 @@ export default function FlashSale() {
             </span>
           )}
         </div>
-
-        {/* Hover Icons
-        <div className="flash-hover-icons">
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              alert("Added to wishlist (demo)");
-            }}
-          >
-            <FiHeart />
-          </button>
-
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              addToCart(product, 1);
-            }}
-          >
-            <FiShoppingCart />
-          </button>
-
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              openQuickView(product);
-            }}
-          >
-            <FiEye />
-          </button>
-        </div>*/}
       </div> 
     </div>
   );
@@ -179,9 +147,6 @@ export default function FlashSale() {
         </div>
       </div>
 
-      {/* =============================== */}
-      {/* QUICK VIEW MODAL (Same as BestDeals) */}
-      {/* =============================== */}
       {quickView && (
         <div className="quickview-backdrop" onClick={closeQuickView}>
           <div className="quickview" onClick={(e) => e.stopPropagation()}>
@@ -197,42 +162,98 @@ export default function FlashSale() {
             </div>
 
             <div className="qv-right">
+              <div className="rating-header">
+                <div className="stars">
+                  {[...Array(5)].map((_, i) =>
+                    i < Math.floor(quickView.rating) ? (
+                      <FaStar key={i} className="star filled" />
+                    ) : (
+                      <FaRegStar key={i} className="star" />
+                    )
+                  )}
+                </div>
+
+                <div className="rating-value">
+                  {quickView.rating} Star Rating
+                </div>
+
+                <div className="feedback-count">
+                  ({quickView.stock?.toLocaleString()} User feedback)
+                </div>
+              </div>
+
               <h2>{quickView.title}</h2>
               <p className="qv-desc">{quickView.description}</p>
+              
+              <div className="qv-meta-info">
+                <div className="row-line">
+                  <span className="key">SKU:</span>
+                  <span className="value">{quickView.sku || "N/A"}</span>
+
+                  <span className="divider">•</span>
+
+                  <span className="key">Availability:</span>
+                  <span
+                    className={`value ${
+                      quickView.stock > 0 ? "in-stock" : "out-stock"
+                    }`}
+                  >
+                    {quickView.stock > 0 ? "In Stock" : "Out of Stock"}
+                  </span>
+                </div>
+
+                <div className="row-line">
+                  <span className="key">Brand:</span>
+                  <span className="value">{quickView.brand || "Unknown"}</span>
+
+                  <span className="divider">•</span>
+
+                  <span className="key">Category:</span>
+                  <span className="value">{quickView.category}</span>
+                </div>
+              </div>
 
               <div className="qv-meta">
                 <div className="qv-price">${quickView.price}</div>
 
                 {quickView.discountPercentage > 0 && (
-                  <div className="qv-discount">
-                    {Math.round(quickView.discountPercentage)}% off
-                  </div>
+                  <span className="badge discount qv-badge">
+                    {Math.round(quickView.discountPercentage)}% OFF
+                  </span>
                 )}
               </div>
 
               <div className="qv-actions">
-                <label>Qty:</label>
-
                 <div className="qty-selector">
                   <button
                     onClick={() => setQty((prev) => (prev > 1 ? prev - 1 : 1))}
                   >
                     -
                   </button>
-
                   <div className="qty-display">{qty}</div>
-
                   <button onClick={() => setQty((prev) => prev + 1)}>+</button>
                 </div>
 
                 <button
                   className="btn-primary"
-                  onClick={() => addToCart(quickView, qty)}
+                  onClick={() => {
+                    addToCart(quickView, qty);
+                    closeQuickView();
+                  }}
                 >
-                  Add to Cart
+                  Add to Cart <FiShoppingCart />
                 </button>
-
-                <button className="btn-secondary">Buy Now</button>
+                
+                <button
+                  className="btn-secondary"
+                  onClick={() => {
+                    addToCart(quickView, qty);
+                    closeQuickView();
+                    navigate("/cart");
+                  }}
+                >
+                  Buy Now
+                </button>
               </div>
             </div>
           </div>

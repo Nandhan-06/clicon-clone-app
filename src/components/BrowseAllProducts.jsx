@@ -11,7 +11,6 @@ function groupByCategory(products) {
 }
 
 export default function BrowseAllProducts({ products }) {
-  // Group only when products change
   const grouped = useMemo(() => groupByCategory(products), [products]);
 
   if (!products || products.length === 0) {
@@ -22,8 +21,6 @@ export default function BrowseAllProducts({ products }) {
     <section className="browse-all">
       {Object.keys(grouped).map((category) => (
         <div key={category} className="category-block">
-
-          {/* CATEGORY TITLE */}
           <h2 className="cat-title">
             {category.replace("-", " ").toUpperCase()}
           </h2>
@@ -31,7 +28,6 @@ export default function BrowseAllProducts({ products }) {
           <div className="cat-grid">
             {grouped[category].map((item) => (
               <article key={item.id} className="product-card">
-
                 <div className="img-wrap">
                   <img
                     src={item.thumbnail}
@@ -56,9 +52,7 @@ export default function BrowseAllProducts({ products }) {
                   <h3 className="title">{item.title}</h3>
                   <div className="meta">
                     <span className="price">₹{item.price}</span>
-                    <span className="rating">
-                      ★ {item.rating?.toFixed(1)}
-                    </span>
+                    <span className="rating">★ {item.rating?.toFixed(1)}</span>
                   </div>
                 </div>
               </article>

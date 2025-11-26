@@ -1,4 +1,3 @@
-//Carousel.jsx
 import { useEffect, useState, useRef } from "react";
 import "./Carousel.css";
 import { FaArrowRightLong, FaArrowLeftLong } from "react-icons/fa6";
@@ -35,19 +34,15 @@ export default function Carousel() {
           allProducts.push(...res.data.products);
         }
 
-        // Filter to ensure max 2 products per category
         const selectedProducts = [];
         const categoryCount = {};
 
-        // Initialize category counts
         allowedCategories.forEach((cat) => {
           categoryCount[cat] = 0;
         });
 
-        // Shuffle all products first
         const shuffled = [...allProducts].sort(() => Math.random() - 0.5);
 
-        // Select products ensuring max 2 per category
         for (const product of shuffled) {
           if (selectedProducts.length >= 12) break;
 
@@ -66,7 +61,6 @@ export default function Carousel() {
     fetchProducts();
   }, []);
 
-  // Double the products to fake infinite loop
   const looped = [...products, ...products];
 
   const totalCards = looped.length;
@@ -76,7 +70,6 @@ export default function Carousel() {
     setPosition((prev) => {
       const newPos = prev - cardWidth;
 
-      // If we have passed half, reset back without animation
       if (newPos <= maxShift) {
         setTimeout(() => {
           trackRef.current.style.transition = "none";
@@ -97,7 +90,6 @@ export default function Carousel() {
     setPosition((prev) => {
       const newPos = prev + cardWidth;
 
-      // If user goes left before 0, jump to the middle
       if (newPos > 0) {
         setTimeout(() => {
           trackRef.current.style.transition = "none";
@@ -114,7 +106,6 @@ export default function Carousel() {
     });
   };
 
-  // Format category name for display
   const formatCategoryName = (category) => {
     return category
       .split("-")
@@ -122,7 +113,6 @@ export default function Carousel() {
       .join(" ");
   };
 
-  // Handle click on product card
   const handleCardClick = (category) => {
     navigate(`/category/${category}`);
   };

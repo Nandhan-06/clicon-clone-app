@@ -1,4 +1,3 @@
-// src/context/CartContext.jsx
 import { createContext, useContext, useState, useEffect } from "react";
 
 const CartContext = createContext();
@@ -17,7 +16,7 @@ export function CartProvider({ children }) {
 
   const [toast, setToast] = useState(null);
 
-  // Auto remove toast after 2 sec
+
   useEffect(() => {
     if (toast) {
       const timer = setTimeout(() => setToast(null), 2000);
@@ -25,12 +24,12 @@ export function CartProvider({ children }) {
     }
   }, [toast]);
 
-  // Persist in localStorage
+
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
-  // Add product
+ 
   const addToCart = (product, qty = 1) => {
     setCartItems((prev) => {
       const exists = prev.find((item) => item.id === product.id);
@@ -48,14 +47,14 @@ export function CartProvider({ children }) {
     setToast(`${product.title} added to cart`);
   };
 
-  // Remove
+ 
   const removeFromCart = (id) => {
     const removed = cartItems.find((i) => i.id === id);
     setCartItems((prev) => prev.filter((item) => item.id !== id));
     setToast(`${removed?.title} removed from cart`);
   };
 
-  // Update qty
+
   const updateQuantity = (id, qty) => {
     if (qty < 1) return removeFromCart(id);
     setCartItems((prev) =>
@@ -65,7 +64,7 @@ export function CartProvider({ children }) {
     );
   };
 
-  // totals
+
   const subtotal = cartItems.reduce(
     (sum, i) => sum + i.price * i.quantity,
     0

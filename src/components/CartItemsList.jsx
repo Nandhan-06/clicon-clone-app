@@ -9,7 +9,6 @@ export default function CartItemsList({ setPage }) {
     <div className="cart-container">
       <h3 className="cart-title">Shopping Cart</h3>
 
-      {/* HEADER */}
       <div className="cart-header">
         <div></div>
         <div>Product</div>
@@ -24,7 +23,6 @@ export default function CartItemsList({ setPage }) {
 
       {cartItems.map((item) => (
         <div className="cart-row" key={item.id}>
-          {/* REMOVE BUTTON */}
           <button
             className="remove-btn"
             onClick={() => removeFromCart(item.id)}
@@ -32,16 +30,13 @@ export default function CartItemsList({ setPage }) {
             X
           </button>
 
-          {/* PRODUCT */}
           <div className="product-info">
             <img src={item.thumbnail} alt={item.title} />
             <span>{item.title}</span>
           </div>
 
-          {/* PRICE */}
           <div className="cell">${item.price}</div>
 
-          {/* QUANTITY BOX */}
           <div className="qty-box">
             <button
               disabled={item.quantity <= 1}
@@ -57,14 +52,10 @@ export default function CartItemsList({ setPage }) {
             </button>
           </div>
 
-          {/* SUBTOTAL */}
-          <div className="cell">
-            ${(item.price * item.quantity).toFixed(2)}
-          </div>
+          <div className="cell">${(item.price * item.quantity).toFixed(2)}</div>
         </div>
       ))}
 
-      {/* ACTION BUTTONS */}
       <div className="cart-actions">
         <button className="outline-btn" onClick={() => setPage("home")}>
           ⬅ RETURN TO SHOP
